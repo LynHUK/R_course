@@ -2,16 +2,20 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "R_course",
+    "title": "Intermediate R course",
     "section": "",
     "text": "This is a follow on course for the Introduction to R and R Studio course or for people who have some familiarity and comfort in using R."
   },
   {
     "objectID": "p3quarto.html#transcript-and-code",
     "href": "p3quarto.html#transcript-and-code",
-    "title": "R_course",
+    "title": "part 3",
     "section": "Transcript and code",
-    "text": "Transcript and code\nSummary is a useful function for giving you an overview of your data. If we run that line we can see the output down in the console. For the columns which are numeric we have the minimum and maximum values, 1st and 3rd quartile, median and mean. For columns with categorical data it will show the count for the first few rows and then a total for how many are in other categories. If there were any missing values in our dataset it would tell us that as well. For a quick overview of a single column of categorical data, we can use the table function.\n\nsummary(data)\n\ntable (data$type)\n\nIf you’re working with data that you’ve imported from a spreadsheet created in Excel, you’ll often find that people have included spaces or used capital letters in the column names. This is something that you can change manually, using the function rename(), which takes the order rename(new_name = old_name) For changing multiple columns, it’s much easier to use a function from the janitor package.\n\ndata &lt;- data |&gt;\n  rename(`Organisation Code` = org_code)\n\ndata &lt;- data |&gt;\n  rename(Breaches = breaches,\n         PERIOD = period,\n         ` type` = type)\n\nlibrary(janitor)\n# if this is not installed, install it manually\n\ndata &lt;- clean_names(data)\n\nThe Janitor package has other helpful functions, including to change the format of dates, remove empty rows, or find duplicate rows. To look at what’s available type ?janitor in the console. If we scroll down to the bottom of the help pane and click on index, we can see the full list of functions in the package."
+    "text": "Transcript and code\nSummary is a useful function for giving you an overview of your data. If we run that line we can see the output down in the console. For the columns which are numeric we have the minimum and maximum values, 1st and 3rd quartile, median and mean. For columns with categorical data it will show the count for the first few rows and then a total for how many are in other categories. If there were any missing values in our dataset it would tell us that as well. For a quick overview of a single column of categorical data, we can use the table function.\n\nsummary(data)\n\ntable (data$type)\n\nIf you’re working with data that you’ve imported from a spreadsheet created in Excel, you’ll often find that people have included spaces or used capital letters in the column names. This is something that you can change manually, using the function rename(), which takes the order rename(new_name = old_name) For changing multiple columns, it’s much easier to use a function from the janitor package.\n\ndata &lt;- data |&gt;\n  rename(`Organisation Code` = org_code)\n\ndata &lt;- data |&gt;\n  rename(Breaches = breaches,\n         PERIOD = period,\n         ` type` = type)\n\nlibrary(janitor)\n# if this is not installed, install it manually\n\ndata &lt;- clean_names(data)\n\nThe Janitor package has other helpful functions, including to change the format of dates, remove empty rows, or find duplicate rows. To look at what’s available type ?janitor in the console. If we scroll down to the bottom of the help pane and click on index, we can see the full list of functions in the package.",
+    "crumbs": [
+      "Home",
+      "part 3"
+    ]
   },
   {
     "objectID": "about.html",
@@ -25,41 +29,131 @@
     "href": "asking_for_help.html",
     "title": "How to ask for help",
     "section": "",
-    "text": "To enable others to help you, you’ll need to include a reprex, or reproducible example - a minimal example of the data and code you’re using, so they can recreate the problem."
+    "text": "To enable others to help you, you’ll need to include a reprex, or reproducible example - a minimal example of the data and code you’re using, so they can recreate the problem.",
+    "crumbs": [
+      "Home",
+      "How to ask for help"
+    ]
   },
   {
     "objectID": "asking_for_help.html#setting-things-up",
     "href": "asking_for_help.html#setting-things-up",
     "title": "How to ask for help",
     "section": "Setting things up",
-    "text": "Setting things up\nCtrl + F7 in RStudio will open a new source column which you can use to gather together the information you want to share in your request for help.\n\nlibrary(dplyr)\nlibrary(datapasta)\n\nYou’ll often want to include a sample of your dataframe rather than the whole thing, particularly if it’s very large.\n\nfresh_data &lt;- NHSRdatasets::LOS_model |&gt; dplyr::slice_sample(n = 20) # This produces a sample dataframe of 20 randomly selected rows. slice_sample(prop=0.2) will randomly select 20% of rows"
+    "text": "Setting things up\nCtrl + F7 in RStudio will open a new source column which you can use to gather together the information you want to share in your request for help.\n\nlibrary(dplyr)\nlibrary(datapasta)\n\nYou’ll often want to include a sample of your dataframe rather than the whole thing, particularly if it’s very large.\n\nfresh_data &lt;- NHSRdatasets::LOS_model |&gt; dplyr::slice_sample(n = 20) # This produces a sample dataframe of 20 randomly selected rows. slice_sample(prop=0.2) will randomly select 20% of rows",
+    "crumbs": [
+      "Home",
+      "How to ask for help"
+    ]
   },
   {
     "objectID": "asking_for_help.html#sharing-your-data",
     "href": "asking_for_help.html#sharing-your-data",
     "title": "How to ask for help",
     "section": "Sharing your data",
-    "text": "Sharing your data\nThe base R function dput() produces the code to recreate your data sample.\n\nfresh_data |&gt; dput()\n\nor another alternative is to use df_paste() from the datapasta package."
+    "text": "Sharing your data\nThe base R function dput() produces the code to recreate your data sample.\n\nfresh_data |&gt; dput()\n\nor another alternative is to use df_paste() from the datapasta package.",
+    "crumbs": [
+      "Home",
+      "How to ask for help"
+    ]
   },
   {
     "objectID": "asking_for_help.html#editing-the-dataframe",
     "href": "asking_for_help.html#editing-the-dataframe",
     "title": "How to ask for help",
     "section": "Editing the dataframe",
-    "text": "Editing the dataframe\nYou may need to edit the data before sharing it to anonymise it or remove confidential information. You could manually edit the output from dput() or df_paste.\n\nAn alternative way to modify your data for sharing\n\n#create a dataframe of organisation names and aliases \nOrganisation &lt;- unique(NHSRdatasets::LOS_model$Organisation) \nlength(Organisation) #checks the length of the vector Organisation \nalias &lt;- letters[1:10] #if you want to automate this you could use letters[1:length(Organisation)] \ndf &lt;- data.frame(Organisation, alias) #combines the 2 vectors into a dataframe\n\nJoin the dataframe we just created to the LOS_model dataframe, select the columns we want & take a sample 10 rows, before piping it into dput() to create the code we can share.\n\ndplyr::left_join(NHSRdatasets::LOS_model, df) |&gt; select(Age, alias, Death) |&gt; slice_sample(n=10) |&gt; dput()"
+    "text": "Editing the dataframe\nYou may need to edit the data before sharing it to anonymise it or remove confidential information. You could manually edit the output from dput() or df_paste.\n\nAn alternative way to modify your data for sharing\n\n#create a dataframe of organisation names and aliases \nOrganisation &lt;- unique(NHSRdatasets::LOS_model$Organisation) \nlength(Organisation) #checks the length of the vector Organisation \nalias &lt;- letters[1:10] #if you want to automate this you could use letters[1:length(Organisation)] \ndf &lt;- data.frame(Organisation, alias) #combines the 2 vectors into a dataframe\n\nJoin the dataframe we just created to the LOS_model dataframe, select the columns we want & take a sample 10 rows, before piping it into dput() to create the code we can share.\n\ndplyr::left_join(NHSRdatasets::LOS_model, df) |&gt; select(Age, alias, Death) |&gt; slice_sample(n=10) |&gt; dput()",
+    "crumbs": [
+      "Home",
+      "How to ask for help"
+    ]
   },
   {
     "objectID": "asking_for_help.html#what-should-you-include",
     "href": "asking_for_help.html#what-should-you-include",
     "title": "How to ask for help",
     "section": "What should you include?",
-    "text": "What should you include?\n\nlibraries used\nyour code and an explanation of what you’re trying to achieve\nthe smallest dataset that still works\nerror messages\nwhat solutions you’ve already tried\ncheck that the code you’re sharing works exactly like your original code with the issue. Sometimes you’ll realise for yourself what the solution is at this point!\ncheck that the code you’re sharing works exactly like your original code with the issue.\n\nDon’t include:\n\nanything confidential\nany code that isn’t essential to the part you’re asking about"
+    "text": "What should you include?\n\nlibraries used\nyour code and an explanation of what you’re trying to achieve\nthe smallest dataset that still works\nerror messages\nwhat solutions you’ve already tried\ncheck that the code you’re sharing works exactly like your original code with the issue. Sometimes you’ll realise for yourself what the solution is at this point!\ncheck that the code you’re sharing works exactly like your original code with the issue.\n\nDon’t include:\n\nanything confidential\nany code that isn’t essential to the part you’re asking about",
+    "crumbs": [
+      "Home",
+      "How to ask for help"
+    ]
   },
   {
     "objectID": "asking_for_help.html#where-can-you-ask-for-help",
     "href": "asking_for_help.html#where-can-you-ask-for-help",
     "title": "How to ask for help",
     "section": "Where can you ask for help?",
-    "text": "Where can you ask for help?\nNHS-R Community Slack forum\nThe Posit forum, hosted by the company that makes and maintains RStudio"
+    "text": "Where can you ask for help?\nNHS-R Community Slack forum\nThe Posit forum, hosted by the company that makes and maintains RStudio",
+    "crumbs": [
+      "Home",
+      "How to ask for help"
+    ]
+  },
+  {
+    "objectID": "webexercises.html",
+    "href": "webexercises.html",
+    "title": "Webexercises",
+    "section": "",
+    "text": "This is a Web Exercise template created by the psychology teaching team at the University of Glasgow, based on ideas from Software Carpentry. This template shows how instructors can easily create interactive web documents that students can use in self-guided learning.\nThe {webexercises} package provides a number of functions that you use in inline R code or through code chunk options to create HTML widgets (text boxes, pull down menus, buttons that reveal hidden content). Examples are given below. Render this file to HTML to see how it works.\nNOTE: To use the widgets in the compiled HTML file, you need to have a JavaScript-enabled browser.",
+    "crumbs": [
+      "Home",
+      "Webexercises"
+    ]
+  },
+  {
+    "objectID": "webexercises.html#example-questions",
+    "href": "webexercises.html#example-questions",
+    "title": "Webexercises",
+    "section": "Example Questions",
+    "text": "Example Questions\n\nFill-In-The-Blanks (fitb())\nCreate fill-in-the-blank questions using fitb(), providing the answer as the first argument.\n\n2 + 2 is \n\nYou can also create these questions dynamically, using variables from your R session.\n\nThe square root of 36 is: \n\nThe blanks are case-sensitive; if you don’t care about case, use the argument ignore_case = TRUE.\n\nWhat is the letter after D? \n\nIf you want to ignore differences in whitespace use, use the argument ignore_ws = TRUE (which is the default) and include spaces in your answer anywhere they could be acceptable.\n\nHow do you load the tidyverse package? \n\nYou can set more than one possible correct answer by setting the answers as a vector.\n\nType a vowel: \n\nYou can use regular expressions to test answers against more complex rules.\n\nType any 3 letters: \n\n\n\nMultiple Choice (mcq())\n\n“Never gonna give you up, never gonna: let you goturn you downrun awaylet you down”\n“I bless the rainsguess it rainssense the rain down in Africa” -Toto\n\n\n\nTrue or False (torf())\n\nTrue or False? You can permute values in a vector using sample(). TRUEFALSE\n\n\n\nLonger MCQs (longmcq())\nWhen your answers are very long, sometimes a drop-down select box gets formatted oddly. You can use longmcq() to deal with this. Since the answers are long, It’s probably best to set up the options inside an R chunk with echo=FALSE.\nWhat is a p-value?\n\n the probability that the null hypothesis is true the probability of the observed, or more extreme, data, under the assumption that the null-hypothesis is true the probability of making an error in your conclusion\n\nWhat is true about a 95% confidence interval of the mean?\n\n 95% of the data fall within this range if you repeated the process many times, 95% of intervals calculated in this way contain the true mean there is a 95% probability that the true mean lies within this range",
+    "crumbs": [
+      "Home",
+      "Webexercises"
+    ]
+  },
+  {
+    "objectID": "webexercises.html#checked-sections",
+    "href": "webexercises.html#checked-sections",
+    "title": "Webexercises",
+    "section": "Checked sections",
+    "text": "Checked sections\nCreate sections with the class webex-check to add a button that hides feedback until it is pressed. Add the class webex-box to draw a box around the section (or use your own styles).\n\nI am going to learn a lot: TRUEFALSE\nWhat is a p-value?\n\n the probability that the null hypothesis is true the probability of the observed, or more extreme, data, under the assumption that the null-hypothesis is true the probability of making an error in your conclusion",
+    "crumbs": [
+      "Home",
+      "Webexercises"
+    ]
+  },
+  {
+    "objectID": "webexercises.html#hidden-solutions-and-hints",
+    "href": "webexercises.html#hidden-solutions-and-hints",
+    "title": "Webexercises",
+    "section": "Hidden solutions and hints",
+    "text": "Hidden solutions and hints\nYou can fence off a solution area that will be hidden behind a button using hide() before the solution and unhide() after, each as inline R code. Pass the text you want to appear on the button to the hide() function.\nIf the solution is a code chunk, instead of using hide() and unhide(), simply set the webex.hide chunk option to TRUE, or set it to the string you wish to display on the button.\nRecreate the scatterplot below, using the built-in cars dataset.\n\n\n\n\n\n\n\n\n\n\n\nI need a hint\n\nSee the documentation for plot() (?plot)\n\n\n\n\n\nClick here to see the solution\n\nplot(cars$speed, cars$dist)",
+    "crumbs": [
+      "Home",
+      "Webexercises"
+    ]
+  },
+  {
+    "objectID": "p1quarto.html#transcript-and-code",
+    "href": "p1quarto.html#transcript-and-code",
+    "title": "Base R and Dplyr functions",
+    "section": "Transcript and code",
+    "text": "Transcript and code\nWe’re going to start with recapping some base R and dplyr functions that you may have already come across. Dplyr is part of the tidyverse, so I’m loading that, and also the NHSRdatasets package, which includes the data we’re going to use. To run multiple lines of code in the source pane we can select the rows we want & press Ctrl + Enter.\n\nlibrary(tidyverse)\nlibrary(NHSRdatasets)\n\nNext we load some data for attendances at Accident & Emergency (A&E). To run a single line of code we can position the cursor anywhere in the line and use Ctrl + Enter.\n\ndata &lt;- ae_attendances\n\nIn the environment panel in the top right corner, by clicking the blue arrow we can see the structure of the dataframe – over 12,000 rows of 6 columns, and it tells us the data type of those columns. We can also click on the symbol on the right which opens the dataframe in a tab in the source pane. To get the names of the columns in a dataframe we can use either colnames() or names() function.\nSince we’re working with a dataframe, they both give the same output.\n\ncolnames(data)      # works on matrices and data frames\nnames(data)         # works on vectors and data frames\n\nUsing dataframe name $ column name will return the content of that column, but especially when it’s a long column, it can be more useful to just find the unique data items. Now we can see there are 274 unique entries in that column.\n\n# using $ sign to select a column\ndata$type\n\n# get list of unique data items in a variable\nunique(data$org_code)\n\nIf you know the position of a specific entry you want to retrieve, you can use square brackets. For a range of entries using the colon. *If you’re coming to R with a knowledge of python, note that R starts counting from 1, not zero.\n\n# we can select a specific entry within that vector with square brackets\n# to call the 4th entry we can use\ndata$type[4]\n\n# we could also call the 4th to 10th entries\ndata$type[4:10]\n\nrange() is a really useful function for working with numeric or character data, returning the maximum and minimum values.\n\n# get the range of a variable (useful for dates)\nrange(data$period)\n\nstr() function shows you the structure of the dataframe, the same as you can see in the environment, but returns it as an output down in the console.\n\n# see structure of data to check data types\nstr(data)\n\nThe head & tail functions allow you to see a snippet of the dataframe, by default head() returns the first 5 rows and tail() the last 5 rows. By adding a number after the data source we can change that and return however many rows we’d like to see.\n\n# see the first 5 rows of data\nhead(data)\n\n# see the last 5 rows of data\ntail(data)\n\n# see the first 15 rows of data\nhead(data, \n     15)\n\nDplyr has a group of similar functions called slice_. Not only can you get a number of rows, you can also choose a proportion. If you want to order the dataframe by a different column, you can add order_by = .\n\n# see the first 15 rows of data \ndplyr::slice_head(data, \n      n = 15)\n\n# see the first 15% of total rows of data \nslice_head(data,\n           prop = .15)\n\n# see the first 15% of total rows of data\n# ordered by attendances\nslice_max(data, \n         prop = .15, \n         order_by = attendances)\n\nThere’s lots more information on the various slice_ functions in the help file, which you can access using ?slice in the console pane.",
+    "crumbs": [
+      "Home",
+      "Base R and Dplyr functions"
+    ]
+  },
+  {
+    "objectID": "p1quarto.html#test-your-understanding",
+    "href": "p1quarto.html#test-your-understanding",
+    "title": "Base R and Dplyr functions",
+    "section": "Test your understanding",
+    "text": "Test your understanding\nWhat is the total attendance across the 5 rows with the lowest attendances? \n\n\nSee a hint\n\nUse ?slice to look at the help file to find the function you need to get a small dataframe of the 5 rows with the lowest attendance. You can then use sum() to get the total of the attendances column.\n\n\n\n\nClick here to see an explanation\n\nq1_df&lt;- slice_min(data, n=5, order_by = breaches)\n\nsum(q1_df$attendances) # This will give the answer = 15",
+    "crumbs": [
+      "Home",
+      "Base R and Dplyr functions"
+    ]
   }
 ]

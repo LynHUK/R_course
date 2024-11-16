@@ -1,5 +1,5 @@
 ---
-title: "R_course"
+title: "Intermediate R course"
 ---
 
 This is a follow on course for the Introduction to R and R Studio course or for people who have some familiarity and comfort in using R.

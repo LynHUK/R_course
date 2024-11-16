@@ -1,22 +1,20 @@
 project:
   type: website
-  output-dir: docs 
-
+  output-dir: docs
 website:
-  title: "R_course"
+  title: R_course
   navbar:
     left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
+    - href: index.qmd
+      text: Home
+    - about.qmd
   sidebar:
     contents: auto
-
 format:
   html:
     theme: cosmo
-    css: styles.css
+    css:
+    - styles.css
+    - include/webex.css
     toc: true
-
-
-
+    include-after-body: include/webex.js
