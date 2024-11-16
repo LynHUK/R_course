@@ -1,0 +1,65 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "R_course",
+    "section": "",
+    "text": "This is a follow on course for the Introduction to R and R Studio course or for people who have some familiarity and comfort in using R."
+  },
+  {
+    "objectID": "p3quarto.html#transcript-and-code",
+    "href": "p3quarto.html#transcript-and-code",
+    "title": "Untitled",
+    "section": "Transcript and code",
+    "text": "Transcript and code\nSummary is a useful function for giving you an overview of your data. If we run that line we can see the output down in the console. For the columns which are numeric we have the minimum and maximum values, 1st and 3rd quartile, median and mean. For columns with categorical data it will show the count for the first few rows and then a total for how many are in other categories. If there were any missing values in our dataset it would tell us that as well. For a quick overview of a single column of categorical data, we can use the table function.\n\nsummary(data)\n\ntable (data$type)\n\nIf you’re working with data that you’ve imported from a spreadsheet created in Excel, you’ll often find that people have included spaces or used capital letters in the column names. This is something that you can change manually, using the function rename(), which takes the order rename(new_name = old_name) For changing multiple columns, it’s much easier to use a function from the janitor package.\n\ndata &lt;- data |&gt;\n  rename(`Organisation Code` = org_code)\n\ndata &lt;- data |&gt;\n  rename(Breaches = breaches,\n         PERIOD = period,\n         ` type` = type)\n\nlibrary(janitor)\n# if this is not installed, install it manually\n\ndata &lt;- clean_names(data)\n\nThe Janitor package has other helpful functions, including to change the format of dates, remove empty rows, or find duplicate rows. To look at what’s available type ?janitor in the console. If we scroll down to the bottom of the help pane and click on index, we can see the full list of functions in the package."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\nThis is an intermediate level R course based on material originally developed by Simon Wellesley-Miller at (https://github.com/Simon-W-M/intermediate_R_training) with additional material by Lyn Howard."
+  },
+  {
+    "objectID": "asking_for_help.html",
+    "href": "asking_for_help.html",
+    "title": "How to ask for help",
+    "section": "",
+    "text": "To enable others to help you, you’ll need to include a reprex, or reproducible example - a minimal example of the data and code you’re using, so they can recreate the problem."
+  },
+  {
+    "objectID": "asking_for_help.html#setting-things-up",
+    "href": "asking_for_help.html#setting-things-up",
+    "title": "How to ask for help",
+    "section": "Setting things up",
+    "text": "Setting things up\nCtrl + F7 in RStudio will open a new source column which you can use to gather together the information you want to share in your request for help.\n\nlibrary(dplyr)\nlibrary(datapasta)\n\nYou’ll often want to include a sample of your dataframe rather than the whole thing, particularly if it’s very large.\n\nfresh_data &lt;- NHSRdatasets::LOS_model |&gt; dplyr::slice_sample(n = 20) # This produces a sample dataframe of 20 randomly selected rows. slice_sample(prop=0.2) will randomly select 20% of rows"
+  },
+  {
+    "objectID": "asking_for_help.html#sharing-your-data",
+    "href": "asking_for_help.html#sharing-your-data",
+    "title": "How to ask for help",
+    "section": "Sharing your data",
+    "text": "Sharing your data\nThe base R function dput() produces the code to recreate your data sample.\n\nfresh_data |&gt; dput()\n\nor another alternative is to use df_paste() from the datapasta package."
+  },
+  {
+    "objectID": "asking_for_help.html#editing-the-dataframe",
+    "href": "asking_for_help.html#editing-the-dataframe",
+    "title": "How to ask for help",
+    "section": "Editing the dataframe",
+    "text": "Editing the dataframe\nYou may need to edit the data before sharing it to anonymise it or remove confidential information. You could manually edit the output from dput() or df_paste.\n\nAn alternative way to modify your data for sharing\n\n#create a dataframe of organisation names and aliases \nOrganisation &lt;- unique(NHSRdatasets::LOS_model$Organisation) \nlength(Organisation) #checks the length of the vector Organisation \nalias &lt;- letters[1:10] #if you want to automate this you could use letters[1:length(Organisation)] \ndf &lt;- data.frame(Organisation, alias) #combines the 2 vectors into a dataframe\n\nJoin the dataframe we just created to the LOS_model dataframe, select the columns we want & take a sample 10 rows, before piping it into dput() to create the code we can share.\n\ndplyr::left_join(NHSRdatasets::LOS_model, df) |&gt; select(Age, alias, Death) |&gt; slice_sample(n=10) |&gt; dput()"
+  },
+  {
+    "objectID": "asking_for_help.html#what-should-you-include",
+    "href": "asking_for_help.html#what-should-you-include",
+    "title": "How to ask for help",
+    "section": "What should you include?",
+    "text": "What should you include?\n\nlibraries used\nyour code and an explanation of what you’re trying to achieve\nthe smallest dataset that still works\nerror messages\nwhat solutions you’ve already tried\ncheck that the code you’re sharing works exactly like your original code with the issue. Sometimes you’ll realise for yourself what the solution is at this point!\ncheck that the code you’re sharing works exactly like your original code with the issue.\n\nDon’t include:\n\nanything confidential\nany code that isn’t essential to the part you’re asking about"
+  },
+  {
+    "objectID": "asking_for_help.html#where-can-you-ask-for-help",
+    "href": "asking_for_help.html#where-can-you-ask-for-help",
+    "title": "How to ask for help",
+    "section": "Where can you ask for help?",
+    "text": "Where can you ask for help?\nNHS-R Community Slack forum\nThe Posit forum, hosted by the company that makes and maintains RStudio"
+  }
+]

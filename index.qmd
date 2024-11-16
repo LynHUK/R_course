@@ -2,10 +2,4 @@
 title: "R_course"
 ---
 
-This is a Quarto website.
-
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
-
-```{r}
-1 + 1
-```
+This is a follow on course for the Introduction to R and R Studio course or for people who have some familiarity and comfort in using R.
