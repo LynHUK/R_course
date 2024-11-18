@@ -181,6 +181,7 @@
       "Home",
       "Intermediate R course, part 4"
     ]
+<<<<<<< HEAD
   },
   {
     "objectID": "p5quarto.html#transcript-and-code",
@@ -203,5 +204,7 @@
       "Home",
       "part 5"
     ]
+=======
+>>>>>>> 6f01ca2471fa286f274f53124553e1d23965e8e8
   }
 ]

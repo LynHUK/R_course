@@ -21,6 +21,7 @@ data sets. Now we'll cover how you can  join tables that don't have a shared key
 or an ID column. So first we just create two data frames.  
 This one which has period, org_code, type,  attendances and just the first five rows  
 and then another one which has the  numeric data. 
+
 ```{r eval = FALSE, echo=TRUE}
 data <- NHSRdatasets::ae_attendances
 
@@ -115,9 +116,9 @@ df_new <- df_one |>
 
 ## Test your understanding
 
-
 Given the following code snippets:
 ```{r eval = FALSE, echo=TRUE}
+
 df_one <- data %>%
   select(admissions) %>%
   top_n(5, admissions)
