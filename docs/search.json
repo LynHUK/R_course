@@ -22,7 +22,11 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "About this site\nThis is an intermediate level R course based on material originally developed by Simon Wellesley-Miller at (https://github.com/Simon-W-M/intermediate_R_training) with additional material by Lyn Howard."
+    "text": "About this site\nThis is an intermediate level R course based on material originally developed by Simon Wellesley-Miller at (https://github.com/Simon-W-M/intermediate_R_training) with additional material by Lyn Howard.",
+    "crumbs": [
+      "Home",
+      "About"
+    ]
   },
   {
     "objectID": "asking_for_help.html",
@@ -154,6 +158,50 @@
     "crumbs": [
       "Home",
       "Base R and Dplyr functions"
+    ]
+  },
+  {
+    "objectID": "p4quarto.html#transcript-and-code",
+    "href": "p4quarto.html#transcript-and-code",
+    "title": "Intermediate R course, part 4",
+    "section": "Transcript and code",
+    "text": "Transcript and code\nThe select function selects which columns to include and also it tells us what order\nto put those columns in. If we were to look at the select function with period then org_code,\nwe can see the period goes on the left then org_code, but if we put\nthem the other way around within the function that’s how they appear within the data frame.\n\ndata_select &lt;- data |&gt;\n  select (period,\n          org_code)\n\nview(data_select)\n\n# or\n\ndata_select &lt;- data |&gt;\n  select (org_code,\n          period)\n\nview(data_select)\n\nWe can also rename the columns within the select function.\n\ndata_select &lt;- data |&gt;\n  select (date_period = period,\n          organisation = org_code)\n\nYou can use the exclamation mark or a negative symbol for a negative select but how they work is very slightly different. If you’re using a vector of column names then you can use the exclamation mark in front of them, but if you’re using them without a vector wrapped around them then you can’t use an exclamation mark in front of them and you can see here that it’s not selected the columns that we wanted. If we want to use the column names listed individually without using a vector then we need to use the minus symbol in front of them and we can see here that it’s removed the old code and period columns.\n\n# can also do a ! or - for negative select\ndata_select &lt;- data |&gt;\n  select (!c(org_code,\n             period))\n\n# NOTE - you have to put the multiples into a vector\ndata_select &lt;- data |&gt;\n  select (!org_code,\n          !period)\n# THIS DOES NOT WORK\n\ndata_select &lt;- data |&gt;\n  select (-org_code,\n          -period)\n# this does work\n\nWe can also select column names that contain\ncertain text. So here it selected attendances and breaches because they contain the letters ‘es’. Selecting columns that don’t contain the letters ‘es’ we use the exclamation in front of it and we can also use the where function to look for columns which are, for example, numeric. So where(is.numeric) takes the data frame and select those columns that have numeric values in them.\n\n# we can use some additional verbs in our select statement\n# select any column name that contains 'es'\ndata_select &lt;- data |&gt;\n  select (contains ('es'))\n\n# select any column name that does not contains 'es'\ndata_select &lt;- data |&gt;\n  select (!contains ('es'))\n\n# select columns where the data is numeric\ndata_select &lt;- data |&gt;\n  select (where(is.numeric))\n\n# select breaches then admissions and then everything else as it is\ndata_select &lt;- data |&gt;\n  select (admissions, \n          breaches, \n          everything())",
+    "crumbs": [
+      "Home",
+      "Intermediate R course, part 4"
+    ]
+  },
+  {
+    "objectID": "p4quarto.html#test-your-understanding",
+    "href": "p4quarto.html#test-your-understanding",
+    "title": "Intermediate R course, part 4",
+    "section": "Test your understanding",
+    "text": "Test your understanding\nWhich expression will produce a dataframe with columns in the order admissions, any columns that are factors, then anything else?\n\n a. data |&gt; select(admissions, factors, everything()) b. data |&gt; select(admissions, factors, anything_else()) c. data |&gt; select(admissions, where(is.factor), anything_else())  d. data |&gt; select(admissions, where(is.factor), everything())\n\n\n\nSee a hint\n\nUse ?select to check the documentation for the function.\n\n\n\n\nClick here to see an explanation\n\nwhere(): Applies a function to all variables and selects those for which the function returns TRUE.\neverything(): Matches all variables.",
+    "crumbs": [
+      "Home",
+      "Intermediate R course, part 4"
+    ]
+  },
+  {
+    "objectID": "p5quarto.html#transcript-and-code",
+    "href": "p5quarto.html#transcript-and-code",
+    "title": "part 5",
+    "section": "Transcript and code",
+    "text": "Transcript and code\nMoving on to Alternative joins. In the Introduction to R course you cover things like left join, inner join, ways of joining your data sets. Now we’ll cover how you can join tables that don’t have a shared key\nor an ID column. So first we just create two data frames.\nThis one which has period, org_code, type, attendances and just the first five rows\nand then another one which has the numeric data.\n\ndata &lt;- NHSRdatasets::ae_attendances\n\ndf_one &lt;- data |&gt;\n  select (period,\n          org_code,\n          type,\n          attendances) |&gt;\n  head()\n\ndf_two &lt;- data |&gt;\n  select (where(is.numeric)) |&gt;\n  head()\n\nWhat we want to do is we want to put those two data frames side by side. These don’t have an ID or a key to join.\nWhat you can use is this cbind and that just puts them row for row straight next to each other.\n\n# connect the two data frames together, side by side\n# column bind\n\ndf_new &lt;- cbind(df_one,\n                df_two)\n\nNote that this duplicated column is duplicated. We have attendances in data frame\none we have attendances in data frame two and it’s just\nput them side by side because it’s not recognizing that they are the same data frame. What it does do is it renames one of those columns so this is attendances dot\none. In some joins it might be dot x, dot y, or it might be dot number. So this is jamming two data frames together regardless of the information inside.\nIf you want to join on an ID or key then do look at the joining slides in the introduction to our course. Just a note on this, something that I find really useful for when I’m thinking about what joins to use is this (dplyr cheat sheet)[https://rstudio.github.io/cheatsheets/html/data-transformation.html] because it has a little picture guide here just to sort of demonstrate how the joins all work, so if you do need a refresher, or if you’re not quite sure what you’re\njoining this sort of picture guide has helped me in the past but that’s for\nthe when you’re joining on a key.\nWe’re looking at just joining data sets together without a key. That was binding columns; you could do the same thing to bind rows. So we do one data frame which is the top five rows, we do one data frame which is the bottom and then we put the rows together, one on top of\nthe other. So this was the top five rows, this is the bottom five rows and this is it together;\nwe’ve got 10 rows now.\n\n# we can also bind data frames by rows, this is similar to concatenation \n# in sql, need matching columns\ndf_one &lt;- data |&gt;\n  head()\n\ndf_two &lt;- data |&gt;\n  tail()\n\ndf_new &lt;- rbind(df_one,\n                df_two)\n\nrbind is like Union in SQL and, like in SQL, when you’re doing an rbind in R you do need the column names to be the same. If they’re not the same when you try to use rbind, R just doesn’t know how to do it - it can’t match the column from one to the column of other to put the\nrows underneath, but what you can use from dplyr is this bind_rows function. So data\nframe one is period, organization code, type, attendances. In two we’ve got period, organization code, type and attendances, but we also have\nthese two other columns. When you use the dplyr bind_row function what it does is it fills in NAs for the ones that were in data frame one because we had no data\nthere. If you tried to do an rbind it would throw an error. Because it’s\ndplyr you can use a pipe as well. So that should be data frame one there.\n\n# if we dont have matching columns can use bind_rows\n# which matches columns where they match and puts in na for where data does not \n# match\n\ndf_one &lt;- data |&gt;\n  select (period,\n          org_code,\n          type,\n          attendances) |&gt;\n  head()\n\ndf_two &lt;- data |&gt;\n  tail()\n\ndf_new &lt;- bind_rows(df_one,\n                    df_two)\n\n# or in a pipe\n\ndf_new &lt;- df_one |&gt;\n  bind_rows(df_two)",
+    "crumbs": [
+      "Home",
+      "part 5"
+    ]
+  },
+  {
+    "objectID": "p5quarto.html#test-your-understanding",
+    "href": "p5quarto.html#test-your-understanding",
+    "title": "part 5",
+    "section": "Test your understanding",
+    "text": "Test your understanding\nGiven the following code snippets:\n\ndf_one &lt;- data %&gt;%\n  select(admissions) %&gt;%\n  top_n(5, admissions)\n\ndf_two &lt;- data %&gt;%\n  select(attendances) %&gt;%\n  top_n(-5, attendances)\n\nWhich of the following lines of code correctly combines df_one and df_two by columns?\n\n a. df_new &lt;- bind_rows(df_one, df_two) b. df_new &lt;- bind_cols(df_one, df_two) c. df_new &lt;- full_join(df_one, df_two) b. df_new &lt;- bind_cols(df_one, df_two)\n\n\n\nSee a hint\n\nThink about how you want to combine the data frames. If you want to add columns from one data frame to another, you should use a function that combines by columns rather than by rows or keys.\n\n\n\n\nClick here to see an explanation\n\nThe correct answer is B) df_new &lt;- bind_cols(df_one, df_two). This is because the bind_cols() function in R is used to combine two data frames by columns, meaning it will place the columns of df_two next to the columns of df_one.\n\nOption A: bind_rows(df_one, df_two) combines data frames by rows, stacking df_two below df_one.\nOption C: full_join(df_one, df_two) performs a join operation, merging data frames based on common columns.\nOption D: inner_join(df_one, df_two) also performs a join operation but only includes rows with matching keys in both data frames.",
+    "crumbs": [
+      "Home",
+      "part 5"
     ]
   }
 ]

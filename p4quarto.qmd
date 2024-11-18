@@ -1,0 +1,122 @@
+---
+title: "part 4"
+output: webexercises::webexercises_default
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(webexercises)
+```
+
+## Video
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/YifxXKF9IJs?si=ZupovjfdzPN9YiKR" data-external= "1" allowfullscreen> </iframe>
+
+## Transcript and code
+The select function selects which columns to include and also it tells us what order  
+to put those columns in. If we were to look at the select function with period then org_code,  
+we can see the period goes on the  left then org_code, but if we put  
+them the other way around within the function that's how they appear within the data frame.  
+```{r eval = FALSE, echo=TRUE}
+data_select <- data |>
+  select (period,
+          org_code)
+
+view(data_select)
+
+# or
+
+data_select <- data |>
+  select (org_code,
+          period)
+
+view(data_select)
+```
+
+We can also rename the columns within the select function.  
+```{r eval = FALSE, echo=TRUE}
+data_select <- data |>
+  select (date_period = period,
+          organisation = org_code)
+```
+
+You can use the exclamation mark or a negative symbol for a negative select but how they work is very slightly different. If you're using  a vector of column names then you can use the exclamation mark in front of them, but if you're  using them without a vector wrapped around them then you can't use an exclamation mark in front of  them and you can see here that it's not selected the columns that we wanted. If we want to use the  column names listed individually without using a vector then we need to use the minus symbol in front of them and we can see here that it's removed the old code and period columns. 
+```{r eval = FALSE, echo=TRUE}
+# can also do a ! or - for negative select
+data_select <- data |>
+  select (!c(org_code,
+             period))
+
+# NOTE - you have to put the multiples into a vector
+data_select <- data |>
+  select (!org_code,
+          !period)
+# THIS DOES NOT WORK
+
+data_select <- data |>
+  select (-org_code,
+          -period)
+# this does work
+```
+
+
+We can also select column names that contain  
+certain text. So here it selected attendances and breaches because they contain the letters 'es'. Selecting columns that don't contain the letters 'es' we use the exclamation in front of it and we can also use the where function to look for columns which are, for example, numeric. So where(is.numeric) takes the data frame and select  those columns that have numeric values in them.
+```{r eval = FALSE, echo=TRUE}
+# we can use some additional verbs in our select statement
+# select any column name that contains 'es'
+data_select <- data |>
+  select (contains ('es'))
+
+# select any column name that does not contains 'es'
+data_select <- data |>
+  select (!contains ('es'))
+
+# select columns where the data is numeric
+data_select <- data |>
+  select (where(is.numeric))
+
+# select breaches then admissions and then everything else as it is
+data_select <- data |>
+  select (admissions, 
+          breaches, 
+          everything())
+```
+
+
+## Test your understanding
+
+```{r, echo = FALSE, results='asis'}
+# Uncomment to change widget colours:
+#style_widgets(incorrect = "goldenrod", correct = "purple")
+```
+
+Which expression will produce a dataframe with columns in the order admissions, any columns that are factors, then anything else?
+
+```{r}
+opts_p <- c("a. data |>  select(admissions, factors, everything())", 
+            "b. data |>  select(admissions, factors, anything_else())", 
+            "c. data |>  select(admissions, where(is.factor), anything_else())
+",
+            answer = "d. data |>  select(admissions, where(is.factor), everything())"
+            )
+```
+
+`r longmcq(opts_p)`
+
+`r hide("See a hint")`
+
+Use ?select to check the documentation for the function.
+
+`r unhide()`
+
+
+
+
+```{r, echo = TRUE, eval = FALSE, webex.hide = "Click here to see an explanation"}
+where(): Applies a function to all variables and selects those for which the function returns TRUE.
+everything(): Matches all variables.
+
+```
+
+
