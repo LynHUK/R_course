@@ -22,7 +22,11 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "About this site\nThis is an intermediate level R course based on material originally developed by Simon Wellesley-Miller at (https://github.com/Simon-W-M/intermediate_R_training) with additional material by Lyn Howard."
+    "text": "About this site\nThis is an intermediate level R course based on material originally developed by Simon Wellesley-Miller at (https://github.com/Simon-W-M/intermediate_R_training) with additional material by Lyn Howard.",
+    "crumbs": [
+      "Home",
+      "About"
+    ]
   },
   {
     "objectID": "asking_for_help.html",
@@ -154,6 +158,28 @@
     "crumbs": [
       "Home",
       "Base R and Dplyr functions"
+    ]
+  },
+  {
+    "objectID": "p4quarto.html#transcript-and-code",
+    "href": "p4quarto.html#transcript-and-code",
+    "title": "Intermediate R course, part 4",
+    "section": "Transcript and code",
+    "text": "Transcript and code\nThe select function selects which columns to include and also it tells us what order\nto put those columns in. If we were to look at the select function with period then org_code,\nwe can see the period goes on the left then org_code, but if we put\nthem the other way around within the function that’s how they appear within the data frame.\n\ndata_select &lt;- data |&gt;\n  select (period,\n          org_code)\n\nview(data_select)\n\n# or\n\ndata_select &lt;- data |&gt;\n  select (org_code,\n          period)\n\nview(data_select)\n\nWe can also rename the columns within the select function.\n\ndata_select &lt;- data |&gt;\n  select (date_period = period,\n          organisation = org_code)\n\nYou can use the exclamation mark or a negative symbol for a negative select but how they work is very slightly different. If you’re using a vector of column names then you can use the exclamation mark in front of them, but if you’re using them without a vector wrapped around them then you can’t use an exclamation mark in front of them and you can see here that it’s not selected the columns that we wanted. If we want to use the column names listed individually without using a vector then we need to use the minus symbol in front of them and we can see here that it’s removed the old code and period columns.\n\n# can also do a ! or - for negative select\ndata_select &lt;- data |&gt;\n  select (!c(org_code,\n             period))\n\n# NOTE - you have to put the multiples into a vector\ndata_select &lt;- data |&gt;\n  select (!org_code,\n          !period)\n# THIS DOES NOT WORK\n\ndata_select &lt;- data |&gt;\n  select (-org_code,\n          -period)\n# this does work\n\nWe can also select column names that contain\ncertain text. So here it selected attendances and breaches because they contain the letters ‘es’. Selecting columns that don’t contain the letters ‘es’ we use the exclamation in front of it and we can also use the where function to look for columns which are, for example, numeric. So where(is.numeric) takes the data frame and select those columns that have numeric values in them.\n\n# we can use some additional verbs in our select statement\n# select any column name that contains 'es'\ndata_select &lt;- data |&gt;\n  select (contains ('es'))\n\n# select any column name that does not contains 'es'\ndata_select &lt;- data |&gt;\n  select (!contains ('es'))\n\n# select columns where the data is numeric\ndata_select &lt;- data |&gt;\n  select (where(is.numeric))\n\n# select breaches then admissions and then everything else as it is\ndata_select &lt;- data |&gt;\n  select (admissions, \n          breaches, \n          everything())",
+    "crumbs": [
+      "Home",
+      "Intermediate R course, part 4"
+    ]
+  },
+  {
+    "objectID": "p4quarto.html#test-your-understanding",
+    "href": "p4quarto.html#test-your-understanding",
+    "title": "Intermediate R course, part 4",
+    "section": "Test your understanding",
+    "text": "Test your understanding\nWhich expression will produce a dataframe with columns in the order admissions, any columns that are factors, then anything else?\n\n a. data |&gt; select(admissions, factors, everything()) b. data |&gt; select(admissions, factors, anything_else()) c. data |&gt; select(admissions, where(is.factor), anything_else())  d. data |&gt; select(admissions, where(is.factor), everything())\n\n\n\nSee a hint\n\nUse ?select to check the documentation for the function.\n\n\n\n\nClick here to see an explanation\n\nwhere(): Applies a function to all variables and selects those for which the function returns TRUE.\neverything(): Matches all variables.",
+    "crumbs": [
+      "Home",
+      "Intermediate R course, part 4"
     ]
   }
 ]

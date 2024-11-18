@@ -3,12 +3,14 @@ title: "part 3"
 format: html
 ---
 
-## 
+
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 
 ```
+
+## Video
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/lzRmRcBVhZA?si=6ofhWnFE4xaLtw1n" data-external="1" allowfullscreen>
 
@@ -18,6 +20,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 Summary is a useful function for giving you an overview of your data. If we run that line we can see the output down in the console.  For the columns which are numeric we have the minimum and maximum values, 1st and 3rd quartile, median and mean. For columns with categorical data it will show the count for the first few rows and then a total for how many are in other categories. If there were any missing values in our dataset it would tell us that as well.
 For a quick overview of a single column of categorical data, we can use the table function.
+
 ```{r eval = FALSE, echo=TRUE}
 summary(data)
 

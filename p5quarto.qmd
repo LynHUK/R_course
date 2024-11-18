@@ -1,0 +1,164 @@
+---
+title: "part 5"
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+```
+
+## Video
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/2QzNfcdZfpU?si=qKrAaJNQmCR8zyEf"  data-external="1" allowfullscreen>
+
+</iframe>
+
+## Transcript and code
+
+Moving on to Alternative joins.  In the Introduction to R 
+course you cover things like left  join, inner join, ways of joining your 
+data sets. Now we'll cover how you can  join tables that don't have a shared key  
+or an ID column. So first we just create two data frames.  
+This one which has period, org_code, type,  attendances and just the first five rows  
+and then another one which has the  numeric data. 
+```{r eval = FALSE, echo=TRUE}
+data <- NHSRdatasets::ae_attendances
+
+df_one <- data |>
+  select (period,
+          org_code,
+          type,
+          attendances) |>
+  head()
+
+df_two <- data |>
+  select (where(is.numeric)) |>
+  head()
+```
+
+What we want to do 
+is we want to put those two data frames side by  side. These don't have an ID or a key to join.  
+What you can use is this cbind and that  just puts them row for row straight next 
+to each other. 
+```{r eval = FALSE, echo=TRUE}
+# connect the two data frames together, side by side
+# column bind
+
+df_new <- cbind(df_one,
+                df_two)
+```
+
+Note that this duplicated column  is duplicated. We have attendances in data frame  
+one we have attendances in data frame two and it's just  
+put them side by side because it's not  recognizing that they are the same data 
+frame. What it does do is it renames one  of those columns so this is attendances dot  
+one. In some joins it might be dot x, dot y, or it  might be dot number. So this is jamming two data 
+frames together regardless of the information inside. 
+
+If you want to join on an ID or key then do look at the joining slides in the introduction  to our course. Just a note on this, something that I find really useful for when I'm thinking  about what joins to use is this (dplyr cheat sheet)[https://rstudio.github.io/cheatsheets/html/data-transformation.html]  because it has 
+a little picture guide here just to  sort of demonstrate how the joins all 
+work, so if you do need a refresher,  or if you're not quite sure what you're  
+joining this sort of picture guide has helped me in the past but that's for  
+the when you're joining on a key.  
+
+We're looking at just joining data sets together without a key. That was binding columns; you could do the same thing to bind rows. So we do one data frame which is the top five rows, we do one data 
+frame which is the bottom and then we  put the rows together, one on top of  
+the other. So this was the top five rows, this is the bottom five rows and this is it together;  
+we've got 10 rows now.
+
+```{r eval = FALSE, echo=TRUE}
+# we can also bind data frames by rows, this is similar to concatenation 
+# in sql, need matching columns
+df_one <- data |>
+  head()
+
+df_two <- data |>
+  tail()
+
+df_new <- rbind(df_one,
+                df_two)
+```
+
+rbind is like Union in SQL and, like in SQL, when you're doing an rbind in R you do need the column names to be the same. If they're not the same when you try to use rbind, R just doesn't know how to do 
+it - it can't match the column from  one to the column of other to put the  
+rows underneath, but what you can use from dplyr is this bind_rows function. So data  
+frame one is period, organization  code, type, attendances. In two 
+we've got period, organization code,  type and attendances, but we also have  
+these two other columns. When you use the dplyr bind_row function what it does is 
+it fills in NAs for the ones that were  in data frame one because we had no data  
+there. If you tried to do an rbind it would throw an error. Because it's  
+dplyr you can use a pipe as well. So  that should be data frame one there.
+```{r eval = FALSE, echo=TRUE}
+# if we dont have matching columns can use bind_rows
+# which matches columns where they match and puts in na for where data does not 
+# match
+
+df_one <- data |>
+  select (period,
+          org_code,
+          type,
+          attendances) |>
+  head()
+
+df_two <- data |>
+  tail()
+
+df_new <- bind_rows(df_one,
+                    df_two)
+
+# or in a pipe
+
+df_new <- df_one |>
+  bind_rows(df_two)
+
+```
+
+## Test your understanding
+
+```{r, echo = FALSE, results='asis'}
+# Uncomment to change widget colours:
+#style_widgets(incorrect = "goldenrod", correct = "purple")
+```
+
+Given the following code snippets:
+```{r, echo = FALSE, results='asis'}
+df_one <- data %>%
+  select(admissions) %>%
+  top_n(5, admissions)
+
+df_two <- data %>%
+  select(attendances) %>%
+  top_n(-5, attendances)
+```
+
+
+Which of the following lines of code correctly combines df_one and df_two by columns?
+
+```{r}
+opts_p <- c("a. df_new <- bind_rows(df_one, df_two)", 
+            "b. df_new <- bind_cols(df_one, df_two)", 
+            "c. df_new <- full_join(df_one, df_two)",
+            answer = "b. df_new <- bind_cols(df_one, df_two)"
+            )
+```
+
+`r longmcq(opts_p)`
+
+`r hide("See a hint")`
+
+Think about how you want to combine the data frames. If you want to add columns from one data frame to another, you should use a function that combines by columns rather than by rows or keys.
+
+`r unhide()`
+
+
+
+
+```{r, echo = TRUE, eval = FALSE, webex.hide = "Click here to see an explanation"}
+The correct answer is B) df_new <- bind_cols(df_one, df_two). This is because the bind_cols() function in R is used to combine two data frames by columns, meaning it will place the columns of df_two next to the columns of df_one.
+
+Option A: bind_rows(df_one, df_two) combines data frames by rows, stacking df_two below df_one.
+Option C: full_join(df_one, df_two) performs a join operation, merging data frames based on common columns.
+Option D: inner_join(df_one, df_two) also performs a join operation but only includes rows with matching keys in both data frames.
+```
+
+

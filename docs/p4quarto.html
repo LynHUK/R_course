@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>R_course - How to ask for help</title>
+<title>R_course - part 4</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -142,7 +142,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./asking_for_help.html">How to ask for help</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./p4quarto.html">part 4</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -162,7 +162,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./asking_for_help.html" class="sidebar-item-text sidebar-link active">
+  <a href="./asking_for_help.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">How to ask for help</span></a>
   </div>
 </li>
@@ -174,14 +174,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./p2quarto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">part 2</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./p3quarto.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">part 3</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./p4quarto.html" class="sidebar-item-text sidebar-link">
+  <a href="./p4quarto.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">part 4</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./p5quarto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">part 5</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -200,14 +212,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#setting-things-up" id="toc-setting-things-up" class="nav-link active" data-scroll-target="#setting-things-up">Setting things up</a></li>
-  <li><a href="#sharing-your-data" id="toc-sharing-your-data" class="nav-link" data-scroll-target="#sharing-your-data">Sharing your data</a></li>
-  <li><a href="#editing-the-dataframe" id="toc-editing-the-dataframe" class="nav-link" data-scroll-target="#editing-the-dataframe">Editing the dataframe</a>
-  <ul class="collapse">
-  <li><a href="#an-alternative-way-to-modify-your-data-for-sharing" id="toc-an-alternative-way-to-modify-your-data-for-sharing" class="nav-link" data-scroll-target="#an-alternative-way-to-modify-your-data-for-sharing">An alternative way to modify your data for sharing</a></li>
-  </ul></li>
-  <li><a href="#what-should-you-include" id="toc-what-should-you-include" class="nav-link" data-scroll-target="#what-should-you-include">What should you include?</a></li>
-  <li><a href="#where-can-you-ask-for-help" id="toc-where-can-you-ask-for-help" class="nav-link" data-scroll-target="#where-can-you-ask-for-help">Where can you ask for help?</a></li>
+  <li><a href="#video" id="toc-video" class="nav-link active" data-scroll-target="#video">Video</a></li>
+  <li><a href="#transcript-and-code" id="toc-transcript-and-code" class="nav-link" data-scroll-target="#transcript-and-code">Transcript and code</a></li>
+  <li><a href="#test-your-understanding" id="toc-test-your-understanding" class="nav-link" data-scroll-target="#test-your-understanding">Test your understanding</a></li>
   </ul>
 </nav>
     </div>
@@ -216,7 +223,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">How to ask for help</h1>
+<h1 class="title">part 4</h1>
 </div>
 
 
@@ -233,66 +240,100 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>To enable others to help you, you’ll need to include a reprex, or reproducible example - a minimal example of the data and code you’re using, so they can recreate the problem.</p>
-<section id="setting-things-up" class="level2">
-<h2 class="anchored" data-anchor-id="setting-things-up">Setting things up</h2>
-<p>Ctrl + F7 in RStudio will open a new source column which you can use to gather together the information you want to share in your request for help.</p>
+<section id="video" class="level2">
+<h2 class="anchored" data-anchor-id="video">Video</h2>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/YifxXKF9IJs?si=ZupovjfdzPN9YiKR" data-external="1" allowfullscreen="">
+</iframe>
+</section>
+<section id="transcript-and-code" class="level2">
+<h2 class="anchored" data-anchor-id="transcript-and-code">Transcript and code</h2>
+<p>The select function selects which columns to include and also it tells us what order<br>
+to put those columns in. If we were to look at the select function with period then org_code,<br>
+we can see the period goes on the left then org_code, but if we put<br>
+them the other way around within the function that’s how they appear within the data frame.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(datapasta)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data_select <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span> (period,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>          org_code)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">view</span>(data_select)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># or</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>data_select <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span> (org_code,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>          period)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">view</span>(data_select)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>You’ll often want to include a sample of your dataframe rather than the whole thing, particularly if it’s very large.</p>
+<p>We can also rename the columns within the select function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>fresh_data <span class="ot">&lt;-</span> NHSRdatasets<span class="sc">::</span>LOS_model <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">20</span>) <span class="co"># This produces a sample dataframe of 20 randomly selected rows. slice_sample(prop=0.2) will randomly select 20% of rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data_select <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span> (<span class="at">date_period =</span> period,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">organisation =</span> org_code)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You can use the exclamation mark or a negative symbol for a negative select but how they work is very slightly different. If you’re using a vector of column names then you can use the exclamation mark in front of them, but if you’re using them without a vector wrapped around them then you can’t use an exclamation mark in front of them and you can see here that it’s not selected the columns that we wanted. If we want to use the column names listed individually without using a vector then we need to use the minus symbol in front of them and we can see here that it’s removed the old code and period columns.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># can also do a ! or - for negative select</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>data_select <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span> (<span class="sc">!</span><span class="fu">c</span>(org_code,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>             period))</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">NOTE</span><span class="co"> - you have to put the multiples into a vector</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>data_select <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span> (<span class="sc">!</span>org_code,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>          <span class="sc">!</span>period)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># THIS DOES NOT WORK</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>data_select <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span> (<span class="sc">-</span>org_code,</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>          <span class="sc">-</span>period)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co"># this does work</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can also select column names that contain<br>
+certain text. So here it selected attendances and breaches because they contain the letters ‘es’. Selecting columns that don’t contain the letters ‘es’ we use the exclamation in front of it and we can also use the where function to look for columns which are, for example, numeric. So where(is.numeric) takes the data frame and select those columns that have numeric values in them.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we can use some additional verbs in our select statement</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># select any column name that contains 'es'</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>data_select <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span> (<span class="fu">contains</span> (<span class="st">'es'</span>))</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># select any column name that does not contains 'es'</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>data_select <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span> (<span class="sc">!</span><span class="fu">contains</span> (<span class="st">'es'</span>))</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># select columns where the data is numeric</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>data_select <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span> (<span class="fu">where</span>(is.numeric))</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co"># select breaches then admissions and then everything else as it is</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>data_select <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span> (admissions, </span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>          breaches, </span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>          <span class="fu">everything</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="sharing-your-data" class="level2">
-<h2 class="anchored" data-anchor-id="sharing-your-data">Sharing your data</h2>
-<p>The base R function <code>dput()</code> produces the code to recreate your data sample.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>fresh_data <span class="sc">|&gt;</span> <span class="fu">dput</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="test-your-understanding" class="level2">
+<h2 class="anchored" data-anchor-id="test-your-understanding">Test your understanding</h2>
+<p>Which expression will produce a dataframe with columns in the order admissions, any columns that are factors, then anything else?</p>
+<div id="radio_XWLUMWDZCV" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_XWLUMWDZCV" value=""> <span>a. data |&gt; select(admissions, factors, everything())</span></label><label><input type="radio" autocomplete="off" name="radio_XWLUMWDZCV" value=""> <span>b. data |&gt; select(admissions, factors, anything_else())</span></label><label><input type="radio" autocomplete="off" name="radio_XWLUMWDZCV" value=""> <span>c.&nbsp;data |&gt; select(admissions, where(is.factor), anything_else()) </span></label><label><input type="radio" autocomplete="off" name="radio_XWLUMWDZCV" value="answer"> <span>d.&nbsp;data |&gt; select(admissions, where(is.factor), everything())</span></label>
 </div>
-<p>or another alternative is to use df_paste() from the datapasta package.</p>
-</section>
-<section id="editing-the-dataframe" class="level2">
-<h2 class="anchored" data-anchor-id="editing-the-dataframe">Editing the dataframe</h2>
-<p>You may need to edit the data before sharing it to anonymise it or remove confidential information. You could manually edit the output from dput() or df_paste.</p>
-<section id="an-alternative-way-to-modify-your-data-for-sharing" class="level3">
-<h3 class="anchored" data-anchor-id="an-alternative-way-to-modify-your-data-for-sharing">An alternative way to modify your data for sharing</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#create a dataframe of organisation names and aliases </span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>Organisation <span class="ot">&lt;-</span> <span class="fu">unique</span>(NHSRdatasets<span class="sc">::</span>LOS_model<span class="sc">$</span>Organisation) </span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(Organisation) <span class="co">#checks the length of the vector Organisation </span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>alias <span class="ot">&lt;-</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>] <span class="co">#if you want to automate this you could use letters[1:length(Organisation)] </span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(Organisation, alias) <span class="co">#combines the 2 vectors into a dataframe</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="webex-solution">
+<button>
+See a hint
+</button>
+<p>Use ?select to check the documentation for the function.</p>
 </div>
-<p>Join the dataframe we just created to the LOS_model dataframe, select the columns we want &amp; take a sample 10 rows, before piping it into dput() to create the code we can share.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">left_join</span>(NHSRdatasets<span class="sc">::</span>LOS_model, df) <span class="sc">|&gt;</span> <span class="fu">select</span>(Age, alias, Death) <span class="sc">|&gt;</span> <span class="fu">slice_sample</span>(<span class="at">n=</span><span class="dv">10</span>) <span class="sc">|&gt;</span> <span class="fu">dput</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-webex.hide="Click here to see an explanation">
+<div class="webex-solution">
+<button>
+Click here to see an explanation
+</button>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">where</span>()<span class="sc">:</span> Applies a <span class="cf">function</span> to all variables and selects those <span class="cf">for</span> which the <span class="cf">function</span> returns TRUE.</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">everything</span>()<span class="sc">:</span> Matches all variables.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-</section>
-<section id="what-should-you-include" class="level2">
-<h2 class="anchored" data-anchor-id="what-should-you-include">What should you include?</h2>
-<ul>
-<li><p>libraries used</p></li>
-<li><p>your code and an explanation of what you’re trying to achieve</p></li>
-<li><p>the smallest dataset that still works</p></li>
-<li><p>error messages</p></li>
-<li><p>what solutions you’ve already tried</p></li>
-<li><p>check that the code you’re sharing works exactly like your original code with the issue. Sometimes you’ll realise for yourself what the solution is at this point!</p></li>
-<li><p>check that the code you’re sharing works exactly like your original code with the issue.</p></li>
-</ul>
-<p>Don’t include:</p>
-<ul>
-<li><p>anything confidential</p></li>
-<li><p>any code that isn’t essential to the part you’re asking about</p></li>
-</ul>
-</section>
-<section id="where-can-you-ask-for-help" class="level2">
-<h2 class="anchored" data-anchor-id="where-can-you-ask-for-help">Where can you ask for help?</h2>
-<p><a href="https://nhsrcommunity.slack.com/" title="A friendly and inclusive community of NHS colleagues who will always try to help">NHS-R Community Slack forum</a></p>
-<p><a href="https://forum.posit.co/">The Posit forum, hosted by the company that makes and maintains RStudio</a></p>
+</div>
 
 
 </section>
