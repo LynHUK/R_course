@@ -51,3 +51,34 @@ data <- clean_names(data)
 The Janitor package has other helpful functions, including to change the format of dates, remove empty rows, or find duplicate rows. To look at what’s available type ?janitor in the console. If we scroll down to the bottom of the help pane and click on index, we can see the full list of functions in the package.
 
 
+
+
+## Test your understanding
+
+```{r, echo = FALSE, results='asis'}
+# Uncomment to change widget colours:
+#style_widgets(incorrect = "goldenrod", correct = "purple")
+```
+
+Which expression will change the column name from "number of breaches" to "breaches"?
+
+```{r}
+opts_p <- c("a. rename(number of breaches = breaches)", 
+            "b. rename('number of breaches' to 'breaches')", 
+            answer = "c. rename(breaches = 'number of breaches')",
+            "d. name(breaches = 'number of breaches')"
+            )
+```
+
+`r longmcq(opts_p)`
+
+`r hide("See a hint")`
+
+Use **?rename** to look at the help file. You need to include ' ' around any name with spaces included
+
+`r unhide()`
+
+```{r, echo = TRUE, eval = FALSE, webex.hide = "Click here to see an explanation"}
+The function we need is rename(new_name = old_name) with ` ` around any name with spaces included.
+```
+

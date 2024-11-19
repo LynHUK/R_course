@@ -2,8 +2,8 @@
 title: "Intermediate R course"
 ---
 
-This is the first part of a follow on course for the (NHS-R Community's Introduction to R and R Studio course)[https://intro-r-rstudio.nhsrcommunity.com/] or for people who have some familiarity and comfort in using R. 
+This is the first part of a follow on course for the [NHS-R Community's Introduction to R and R Studio course](https://intro-r-rstudio.nhsrcommunity.com/) or for people who have some familiarity and comfort in using R.
 
-If you're keen to continue your learning before the next part is published, you can see the YouTube recording of the live intermediate course at https://www.youtube.com/watch?v=-ryFXMK1DoI&t=4535s
+If you're keen to continue your learning before the next part is published, you can see the YouTube recording of the live intermediate course at <https://www.youtube.com/watch?v=-ryFXMK1DoI&t=4535s>
 
-Your feedback on how you find using the course is very welcome at https://forms.office.com/e/LH8RRn5xyC
+Your feedback on how you find using the course is very welcome at <https://forms.office.com/e/LH8RRn5xyC>

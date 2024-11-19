@@ -196,12 +196,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">page 5</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./webexercises.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Webexercises</span></a>
-  </div>
-</li>
     </ul>
     </div>
 </nav>
@@ -214,6 +208,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#video" id="toc-video" class="nav-link active" data-scroll-target="#video">Video</a></li>
   <li><a href="#transcript-and-code" id="toc-transcript-and-code" class="nav-link" data-scroll-target="#transcript-and-code">Transcript and code</a></li>
+  <li><a href="#test-your-understanding" id="toc-test-your-understanding" class="nav-link" data-scroll-target="#test-your-understanding">Test your understanding</a></li>
   </ul>
 </nav>
     </div>
@@ -268,6 +263,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">clean_names</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The Janitor package has other helpful functions, including to change the format of dates, remove empty rows, or find duplicate rows. To look at what’s available type ?janitor in the console. If we scroll down to the bottom of the help pane and click on index, we can see the full list of functions in the package.</p>
+</section>
+<section id="test-your-understanding" class="level2">
+<h2 class="anchored" data-anchor-id="test-your-understanding">Test your understanding</h2>
+<p>Which expression will change the column name from “number of breaches” to “breaches”?</p>
+<div id="radio_TWMRFMUKXI" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_TWMRFMUKXI" value=""> <span>a. rename(number of breaches = breaches)</span></label><label><input type="radio" autocomplete="off" name="radio_TWMRFMUKXI" value=""> <span>b. rename('number of breaches' to 'breaches')</span></label><label><input type="radio" autocomplete="off" name="radio_TWMRFMUKXI" value="answer"> <span>c.&nbsp;rename(breaches = 'number of breaches')</span></label><label><input type="radio" autocomplete="off" name="radio_TWMRFMUKXI" value=""> <span>d.&nbsp;name(breaches = 'number of breaches')</span></label>
+</div>
+<div class="webex-solution">
+<button>
+See a hint
+</button>
+<p>Use <strong>?rename</strong> to look at the help file. You need to include ’ ’ around any name with spaces included</p>
+</div>
+<div class="cell" data-webex.hide="Click here to see an explanation">
+<div class="webex-solution">
+<button>
+Click here to see an explanation
+</button>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>The <span class="cf">function</span> we need is <span class="fu">rename</span>(<span class="at">new_name =</span> old_name) with <span class="st">`</span><span class="at"> </span><span class="st">`</span> around any name with spaces included.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
 
 
 </section>

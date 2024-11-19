@@ -7,7 +7,7 @@ knitr::opts_chunk$set(echo = FALSE, warning = FALSE)
 library(webexercises)
 ```
 
-##Video
+## Video
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/JfWm-ECqXts?si=RdseoRHMFwtoO9ON" data-external="1" allowfullscreen>
 
