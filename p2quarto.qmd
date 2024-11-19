@@ -1,5 +1,5 @@
 ---
-title: "part 2"
+title: "page 2"
 ---
 
 ```{r setup, include = FALSE}

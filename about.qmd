@@ -5,3 +5,5 @@ title: "About"
 About this site
 
 This is an intermediate level R course based on material originally developed by Simon Wellesley-Miller at (https://github.com/Simon-W-M/intermediate_R_training) with additional material by Lyn Howard. 
+
+Video material features Lyn Howard, Simon Wellesley-Miller and Anya Ferguson.
