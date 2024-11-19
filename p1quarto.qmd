@@ -7,21 +7,29 @@ knitr::opts_chunk$set(echo = FALSE, warning = FALSE)
 library(webexercises)
 ```
 
-Most of the pages of this course are structured like this:
+# Part 1 course content
 
-##Video
+| Page   | Functions covered                                                           |
+|--------|-----------------------------------------------------------------------------|
+| page 2 | names() unique() \[\] range() str() head() tail() dplyr::slice_head()       |
+| page 3 | summary() table() rename() janitor::clean_names()                           |
+| page 4 | select() select (contains ('es')) select (where(is.numeric)) ….everything() |
+| page 5 | cbind() rbind() bind_rows()                                                 |
+
+# Most of the pages of this course are structured like this:
+
+## Video
 
 A short video demonstrating and explaining the code.
 
 ## Transcript and code
 
-Text based on the transcript of the video above, but in some cases edited to make it easier to follow.  Code snippets like the one below are inserted to illustrate the code being discussed. If you click on the clipboard symbol in the top right of the code panel the code should be copied to your clipboard ready for you to paste into your RStudio so you can try it out for yourself. 
+Text based on the transcript of the video above, but in some cases edited to make it easier to follow. Code snippets like the one below are inserted to illustrate the code being discussed. If you click on the clipboard symbol in the top right of the code panel the code should be copied to your clipboard ready for you to paste into your RStudio so you can try it out for yourself.
 
 ```{r eval = FALSE, echo=TRUE}
 library(tidyverse)
 library(NHSRdatasets)
 ```
-
 
 ## Test your understanding
 

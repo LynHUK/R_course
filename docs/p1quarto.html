@@ -196,12 +196,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">page 5</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./webexercises.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Webexercises</span></a>
-  </div>
-</li>
     </ul>
     </div>
 </nav>
@@ -212,8 +206,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#transcript-and-code" id="toc-transcript-and-code" class="nav-link active" data-scroll-target="#transcript-and-code">Transcript and code</a></li>
+  <li><a href="#part-1-course-content" id="toc-part-1-course-content" class="nav-link active" data-scroll-target="#part-1-course-content">Part 1 course content</a></li>
+  <li><a href="#most-of-the-pages-of-this-course-are-structured-like-this" id="toc-most-of-the-pages-of-this-course-are-structured-like-this" class="nav-link" data-scroll-target="#most-of-the-pages-of-this-course-are-structured-like-this">Most of the pages of this course are structured like this:</a>
+  <ul class="collapse">
+  <li><a href="#video" id="toc-video" class="nav-link" data-scroll-target="#video">Video</a></li>
+  <li><a href="#transcript-and-code" id="toc-transcript-and-code" class="nav-link" data-scroll-target="#transcript-and-code">Transcript and code</a></li>
   <li><a href="#test-your-understanding" id="toc-test-your-understanding" class="nav-link" data-scroll-target="#test-your-understanding">Test your understanding</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -239,9 +238,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Most of the pages of this course are structured like this:</p>
-<p>##Video</p>
+<section id="part-1-course-content" class="level1">
+<h1>Part 1 course content</h1>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 90%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Page</th>
+<th>Functions covered</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>page 2</td>
+<td>names() unique() [] range() str() head() tail() dplyr::slice_head()</td>
+</tr>
+<tr class="even">
+<td>page 3</td>
+<td>summary() table() rename() janitor::clean_names()</td>
+</tr>
+<tr class="odd">
+<td>page 4</td>
+<td>select() select (contains (‘es’)) select (where(is.numeric)) ….everything()</td>
+</tr>
+<tr class="even">
+<td>page 5</td>
+<td>cbind() rbind() bind_rows()</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="most-of-the-pages-of-this-course-are-structured-like-this" class="level1">
+<h1>Most of the pages of this course are structured like this:</h1>
+<section id="video" class="level2">
+<h2 class="anchored" data-anchor-id="video">Video</h2>
 <p>A short video demonstrating and explaining the code.</p>
+</section>
 <section id="transcript-and-code" class="level2">
 <h2 class="anchored" data-anchor-id="transcript-and-code">Transcript and code</h2>
 <p>Text based on the transcript of the video above, but in some cases edited to make it easier to follow. Code snippets like the one below are inserted to illustrate the code being discussed. If you click on the clipboard symbol in the top right of the code panel the code should be copied to your clipboard ready for you to paste into your RStudio so you can try it out for yourself.</p>
@@ -255,6 +290,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Questions to help you check that you’ve understood the material. Click on the buttons if you’d like a hint, or an explanation of the answer.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
