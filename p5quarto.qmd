@@ -15,12 +15,8 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Transcript and code
 
-Moving on to Alternative joins.  In the Introduction to R 
-course you cover things like left  join, inner join, ways of joining your 
-data sets. Now we'll cover how you can  join tables that don't have a shared key  
-or an ID column. So first we just create two data frames.  
-This one which has period, org_code, type,  attendances and just the first five rows  
-and then another one which has the  numeric data. 
+Moving on to Alternative joins.  In the Introduction to R course you cover things like left  join, inner join, ways of joining your 
+data sets. Now we'll cover how you can  join tables that don't have a shared key  or an ID column. So first we just create two data frames. This one which has period, org_code, type,  attendances and just the first five rows  and then another one which has the  numeric data. 
 
 ```{r eval = FALSE, echo=TRUE}
 data <- NHSRdatasets::ae_attendances
@@ -49,23 +45,11 @@ df_new <- cbind(df_one,
                 df_two)
 ```
 
-Note that this duplicated column  is duplicated. We have attendances in data frame  
-one we have attendances in data frame two and it's just  
-put them side by side because it's not  recognizing that they are the same data 
-frame. What it does do is it renames one  of those columns so this is attendances dot  
-one. In some joins it might be dot x, dot y, or it  might be dot number. So this is jamming two data 
-frames together regardless of the information inside. 
+Note that this duplicated column  is duplicated. We have attendances in data frame one we have attendances in data frame two and it's just put them side by side because it's not  recognizing that they are the same data frame. What it does do is it renames one  of those columns so this is attendances dot one. In some joins it might be dot x, dot y, or it  might be dot number. So this is jamming two data frames together regardless of the information inside. 
 
-If you want to join on an ID or key then do look at the joining slides in the introduction  to our course. Just a note on this, something that I find really useful for when I'm thinking  about what joins to use is this (dplyr cheat sheet)[https://rstudio.github.io/cheatsheets/html/data-transformation.html]  because it has 
-a little picture guide here just to  sort of demonstrate how the joins all 
-work, so if you do need a refresher,  or if you're not quite sure what you're  
-joining this sort of picture guide has helped me in the past but that's for  
-the when you're joining on a key.  
+If you want to join on an ID or key then do look at the joining slides in the introduction  to our course. Just a note on this, something that I find really useful for when I'm thinking  about what joins to use is this [dplyr cheat sheet](https://rstudio.github.io/cheatsheets/html/data-transformation.html)  because it has a little picture guide here just to  sort of demonstrate how the joins all work, so if you do need a refresher,  or if you're not quite sure what you're joining this sort of picture guide has helped me in the past but that's for the when you're joining on a key.  
 
-We're looking at just joining data sets together without a key. That was binding columns; you could do the same thing to bind rows. So we do one data frame which is the top five rows, we do one data 
-frame which is the bottom and then we  put the rows together, one on top of  
-the other. So this was the top five rows, this is the bottom five rows and this is it together;  
-we've got 10 rows now.
+We're looking at just joining data sets together without a key. That was binding columns; you could do the same thing to bind rows. So we do one data frame which is the top five rows, we do one data frame which is the bottom and then we  put the rows together, one on top of the other. So this was the top five rows, this is the bottom five rows and this is it together;  we've got 10 rows now.
 
 ```{r eval = FALSE, echo=TRUE}
 # we can also bind data frames by rows, this is similar to concatenation 
@@ -80,15 +64,9 @@ df_new <- rbind(df_one,
                 df_two)
 ```
 
-rbind is like Union in SQL and, like in SQL, when you're doing an rbind in R you do need the column names to be the same. If they're not the same when you try to use rbind, R just doesn't know how to do 
-it - it can't match the column from  one to the column of other to put the  
-rows underneath, but what you can use from dplyr is this bind_rows function. So data  
-frame one is period, organization  code, type, attendances. In two 
-we've got period, organization code,  type and attendances, but we also have  
-these two other columns. When you use the dplyr bind_row function what it does is 
-it fills in NAs for the ones that were  in data frame one because we had no data  
-there. If you tried to do an rbind it would throw an error. Because it's  
-dplyr you can use a pipe as well. So  that should be data frame one there.
+rbind is like Union in SQL and, like in SQL, when you're doing an rbind in R you do need the column names to be the same. If they're not the same when you try to use rbind, R just doesn't know how to do it - it can't match the column from  one to the column of other to put the rows underneath, but what you can use from dplyr is this bind_rows function. So data frame one is period, organization  code, type, attendances. In two we've got period, organization code,  type and attendances, but we also have these two other columns. When you use the dplyr bind_row function what it does is 
+it fills in NAs for the ones that were in data frame one because we had no data there. If you tried to do an rbind it would throw an error. Because it's  dplyr you can use a pipe as well. So  that should be data frame one there.
+
 ```{r eval = FALSE, echo=TRUE}
 # if we dont have matching columns can use bind_rows
 # which matches columns where they match and puts in na for where data does not 

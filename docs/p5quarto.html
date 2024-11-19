@@ -196,12 +196,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">page 5</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./webexercises.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Webexercises</span></a>
-  </div>
-</li>
     </ul>
     </div>
 </nav>
@@ -247,10 +241,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="transcript-and-code" class="level2">
 <h2 class="anchored" data-anchor-id="transcript-and-code">Transcript and code</h2>
-<p>Moving on to Alternative joins. In the Introduction to R course you cover things like left join, inner join, ways of joining your data sets. Now we’ll cover how you can join tables that don’t have a shared key<br>
-or an ID column. So first we just create two data frames.<br>
-This one which has period, org_code, type, attendances and just the first five rows<br>
-and then another one which has the numeric data.</p>
+<p>Moving on to Alternative joins. In the Introduction to R course you cover things like left join, inner join, ways of joining your data sets. Now we’ll cover how you can join tables that don’t have a shared key or an ID column. So first we just create two data frames. This one which has period, org_code, type, attendances and just the first five rows and then another one which has the numeric data.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> NHSRdatasets<span class="sc">::</span>ae_attendances</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -274,16 +265,9 @@ What you can use is this cbind and that just puts them row for row straight next
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>df_new <span class="ot">&lt;-</span> <span class="fu">cbind</span>(df_one,</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                df_two)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Note that this duplicated column is duplicated. We have attendances in data frame<br>
-one we have attendances in data frame two and it’s just<br>
-put them side by side because it’s not recognizing that they are the same data frame. What it does do is it renames one of those columns so this is attendances dot<br>
-one. In some joins it might be dot x, dot y, or it might be dot number. So this is jamming two data frames together regardless of the information inside.</p>
-<p>If you want to join on an ID or key then do look at the joining slides in the introduction to our course. Just a note on this, something that I find really useful for when I’m thinking about what joins to use is this (dplyr cheat sheet)[https://rstudio.github.io/cheatsheets/html/data-transformation.html] because it has a little picture guide here just to sort of demonstrate how the joins all work, so if you do need a refresher, or if you’re not quite sure what you’re<br>
-joining this sort of picture guide has helped me in the past but that’s for<br>
-the when you’re joining on a key.</p>
-<p>We’re looking at just joining data sets together without a key. That was binding columns; you could do the same thing to bind rows. So we do one data frame which is the top five rows, we do one data frame which is the bottom and then we put the rows together, one on top of<br>
-the other. So this was the top five rows, this is the bottom five rows and this is it together;<br>
-we’ve got 10 rows now.</p>
+<p>Note that this duplicated column is duplicated. We have attendances in data frame one we have attendances in data frame two and it’s just put them side by side because it’s not recognizing that they are the same data frame. What it does do is it renames one of those columns so this is attendances dot one. In some joins it might be dot x, dot y, or it might be dot number. So this is jamming two data frames together regardless of the information inside.</p>
+<p>If you want to join on an ID or key then do look at the joining slides in the introduction to our course. Just a note on this, something that I find really useful for when I’m thinking about what joins to use is this <a href="https://rstudio.github.io/cheatsheets/html/data-transformation.html">dplyr cheat sheet</a> because it has a little picture guide here just to sort of demonstrate how the joins all work, so if you do need a refresher, or if you’re not quite sure what you’re joining this sort of picture guide has helped me in the past but that’s for the when you’re joining on a key.</p>
+<p>We’re looking at just joining data sets together without a key. That was binding columns; you could do the same thing to bind rows. So we do one data frame which is the top five rows, we do one data frame which is the bottom and then we put the rows together, one on top of the other. So this was the top five rows, this is the bottom five rows and this is it together; we’ve got 10 rows now.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we can also bind data frames by rows, this is similar to concatenation </span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># in sql, need matching columns</span></span>
@@ -296,12 +280,7 @@ we’ve got 10 rows now.</p>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>df_new <span class="ot">&lt;-</span> <span class="fu">rbind</span>(df_one,</span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>                df_two)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>rbind is like Union in SQL and, like in SQL, when you’re doing an rbind in R you do need the column names to be the same. If they’re not the same when you try to use rbind, R just doesn’t know how to do it - it can’t match the column from one to the column of other to put the<br>
-rows underneath, but what you can use from dplyr is this bind_rows function. So data<br>
-frame one is period, organization code, type, attendances. In two we’ve got period, organization code, type and attendances, but we also have<br>
-these two other columns. When you use the dplyr bind_row function what it does is it fills in NAs for the ones that were in data frame one because we had no data<br>
-there. If you tried to do an rbind it would throw an error. Because it’s<br>
-dplyr you can use a pipe as well. So that should be data frame one there.</p>
+<p>rbind is like Union in SQL and, like in SQL, when you’re doing an rbind in R you do need the column names to be the same. If they’re not the same when you try to use rbind, R just doesn’t know how to do it - it can’t match the column from one to the column of other to put the rows underneath, but what you can use from dplyr is this bind_rows function. So data frame one is period, organization code, type, attendances. In two we’ve got period, organization code, type and attendances, but we also have these two other columns. When you use the dplyr bind_row function what it does is it fills in NAs for the ones that were in data frame one because we had no data there. If you tried to do an rbind it would throw an error. Because it’s dplyr you can use a pipe as well. So that should be data frame one there.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># if we dont have matching columns can use bind_rows</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># which matches columns where they match and puts in na for where data does not </span></span>
@@ -339,8 +318,8 @@ dplyr you can use a pipe as well. So that should be data frame one there.</p>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">top_n</span>(<span class="sc">-</span><span class="dv">5</span>, attendances)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Which of the following lines of code correctly combines df_one and df_two by columns?</p>
-<div id="radio_RGCXOHSCBB" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_RGCXOHSCBB" value=""> <span>a. df_new &lt;- bind_rows(df_one, df_two)</span></label><label><input type="radio" autocomplete="off" name="radio_RGCXOHSCBB" value=""> <span>b. df_new &lt;- bind_cols(df_one, df_two)</span></label><label><input type="radio" autocomplete="off" name="radio_RGCXOHSCBB" value=""> <span>c.&nbsp;df_new &lt;- full_join(df_one, df_two)</span></label><label><input type="radio" autocomplete="off" name="radio_RGCXOHSCBB" value="answer"> <span>b. df_new &lt;- bind_cols(df_one, df_two)</span></label>
+<div id="radio_BSELXQOVTI" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_BSELXQOVTI" value=""> <span>a. df_new &lt;- bind_rows(df_one, df_two)</span></label><label><input type="radio" autocomplete="off" name="radio_BSELXQOVTI" value=""> <span>b. df_new &lt;- bind_cols(df_one, df_two)</span></label><label><input type="radio" autocomplete="off" name="radio_BSELXQOVTI" value=""> <span>c.&nbsp;df_new &lt;- full_join(df_one, df_two)</span></label><label><input type="radio" autocomplete="off" name="radio_BSELXQOVTI" value="answer"> <span>b. df_new &lt;- bind_cols(df_one, df_two)</span></label>
 </div>
 <div class="webex-solution">
 <button>
