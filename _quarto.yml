@@ -2,7 +2,8 @@ project:
   type: website
   output-dir: docs
 website:
-  title: R_course
+  page-navigation: true
+  title: Intermediate R course
   navbar:
     left:
     - href: index.qmd
